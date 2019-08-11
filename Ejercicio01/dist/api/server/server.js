@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 // var bodyParser = require('body-parser')
 const body_parser_1 = __importDefault(require("body-parser"));
+const rutas_1 = require("../routes/rutas");
 class Server {
     /**
      * Este es el constructor - comando 'ctor'
@@ -37,6 +38,7 @@ class Server {
             res.status(200).send('La API FUNCIONA');
             // res.send('La API funciona!'); // status:200
         });
+        this.app.use('/api', rutas_1.rutas_router);
     }
     // iniciando el servidor 
     start() {

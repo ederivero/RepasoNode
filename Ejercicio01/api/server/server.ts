@@ -2,6 +2,7 @@ import express from 'express';
 import { Response, Request, NextFunction } from 'express';
 // var bodyParser = require('body-parser')
 import bodyParser from 'body-parser';
+import { rutas_router } from '../routes/rutas';
 
 export class Server {
     public app: express.Application;
@@ -39,6 +40,7 @@ export class Server {
             res.status(200).send('La API FUNCIONA');
             // res.send('La API funciona!'); // status:200
         });
+        this.app.use('/api',rutas_router);
     }
 
     // iniciando el servidor 
