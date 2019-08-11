@@ -32,9 +32,7 @@ const crearTarea = (descripcionEntrada) => {
 };
 const actualizarTarea = (descripcion) => {
     cargarBD();
-    let index = listado.data.findIndex((tarea) => {
-        tarea.descripcion === descripcion;
-    });
+    let index = listado.data.findIndex((tarea) => tarea.descripcion === descripcion);
     if (index >= 0) {
         listado.data[index].completado = true;
         guardarBD();
@@ -52,11 +50,13 @@ exports.controlador = {
         let descripcion = req.body.descripcion;
         // let {descripcion} = req.body; ES6
         crearTarea(descripcion);
+        // MUESTRE LAS TAREAS
         res.send('Se agrego a la lista de tareas');
     },
     actualizar: (req, res) => {
         let { descripcion } = req.body;
         if (actualizarTarea(descripcion)) {
+            // muestre todas las tareas 
             res.send('Se actualizo la tarea');
         }
         else {
